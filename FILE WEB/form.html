@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="utf-8">
+   		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="icon" href="favicon.ico" type="image/gif" sizes="20x16">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+        <!-- jQuery library -->
+        <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+        <style>
+            #home{
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /// some script
+            
+            // jquery ready start
+            $(document).ready(function() {
+                // jQuery code
+            
+                ///////////////// fixed menu on scroll for desctop
+                if ($(window).width() > 992) {
+                    
+                    var navbar_height =  $('.navbar').outerHeight();
+            
+                    $(window).scroll(function(){  
+                        if ($(this).scrollTop() > 300) {
+                             $('.navbar-wrap').css('height', navbar_height + 'px');
+                             $('#navbar_top').addClass("fixed-top");
+                             
+                        }else{
+                            $('#navbar_top').removeClass("fixed-top");
+                            $('.navbar-wrap').css('height', 'auto');
+                        }   
+                    });
+                } // end if
+            
+                
+            }); // jquery end
+        </script>     
+        <div class="navbar-wrap">
+            <nav id="navbar_top" class="navbar navbar-dark" style="background-color: #148314;">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">
+                        <img src="{{ url_for('static', filename='logo_puskesmas.png') }}" alt="Logo" width="50" height="50" class="">
+                        Klasterisasi Puskesmas
+                    </a>
+                </div>
+            </nav>
+        </div>
+        </br>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="alert alert-success" role="alert">
+                            <p style="font-weight: bold; text-align:center; font-size: 50px;">
+                                Selamat Datang
+                            </p>
+                            <pre></pre>
+                            <p style="font-size: 20px;">
+                                Pada website ini pengunjung dapat melakukan klasterisasi data puskesmas. 
+                                Klasterisasi tersebut dapat dilakukan dengan cara memasukkan file excel data puskesmas dan juga jumlah klasternya.
+                                Setelah itu pengunjung dapat melihat hasil dari klasterisasi yang didapatkan setelah data yang diunggah tersebut diolah pada website ini.
+                                Terimakasih.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </br>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                Form Klasterisasi Puskesmas
+                            </div>
+                            <div class="card-body">
+                                <form role="form" action="http://localhost:5000/uploader" enctype="multipart/form-data" method="post">
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Data Puskesmas Excel</label>
+                                        <input class="form-control" name="excel" type="file" id="formFile" accept=".xlsx, .xls" required>
+                                    </div>
+
+                                    <label for="k" class="form-label">Jumlah Klaster</label>
+                                    <input id="k" name="jumlah" type="text" class="form-control" placeholder="Masukkan Jumlah Klaster" required>
+                                    </br>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button type="submit" class="btn btn-primary ">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+    
+</html>
